@@ -21,9 +21,10 @@ namespace OrderEngineP
             return TotalAmount;
         }
 
-        public List<Product> AddSkuIds()
-        {
+        public List<Product> AddSkuIds(string skuId,int price)
+        {            
             List<Product> SkuList = new List<Product>();
+            
             return SkuList;
         }
     }
