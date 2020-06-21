@@ -1,0 +1,7 @@
+D:\manoj\Msk\Order\obj\Debug\Order.csprojAssemblyReference.cache
+D:\manoj\Msk\Order\obj\Debug\_EmptyResource.resources
+D:\manoj\Msk\Order\obj\Debug\Order.csproj.GenerateResource.cache
+D:\manoj\Msk\Order\obj\Debug\Order.csproj.CoreCompileInputs.cache
+D:\manoj\Msk\Order\obj\Debug\CSharp\1033\Order.zip
+D:\manoj\Msk\Order\obj\Debug\Order.dll
+D:\manoj\Msk\Order\obj\Debug\Order.pdb
