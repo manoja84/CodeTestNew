@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OrderEngineP;
+using Moq;
 
 namespace OrderEngine
 {
@@ -103,6 +104,18 @@ namespace OrderEngine
             orderdetails.orderDetails(1, "D");
             orderdetails.orderDetails(1, "X");
             Assert.IsTrue(orderdetails.GetTotalOrderAmount() == 290);
+        }
+
+        [TestMethod]
+        public void TestEmptyOrder_moq()
+        {
+            var mockorder = new Mock<IOrderDetails>();
+            mockorder
+                .Setup(dp => dp.GetOrderId())
+                .Returns(0);
+
+            var dict = new OrderDetails(mockorder.Object);
+            Assert.AreEqual(dict.OrderId, 0);
         }
     }
 }

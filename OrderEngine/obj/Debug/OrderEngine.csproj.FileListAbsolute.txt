@@ -37,3 +37,11 @@ D:\CodeTest\OrderEngine\bin\Debug\Newtonsoft.Json.xml
 D:\CodeTest\OrderEngine\bin\Debug\nunit.framework.pdb
 D:\CodeTest\OrderEngine\bin\Debug\nunit.framework.xml
 D:\CodeTest\OrderEngine\obj\Debug\OrderEngine.csproj.CopyComplete
+D:\CodeTest\OrderEngine\bin\Debug\Castle.Core.dll
+D:\CodeTest\OrderEngine\bin\Debug\Moq.dll
+D:\CodeTest\OrderEngine\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\CodeTest\OrderEngine\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\CodeTest\OrderEngine\bin\Debug\Castle.Core.xml
+D:\CodeTest\OrderEngine\bin\Debug\Moq.xml
+D:\CodeTest\OrderEngine\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\CodeTest\OrderEngine\bin\Debug\System.Threading.Tasks.Extensions.xml

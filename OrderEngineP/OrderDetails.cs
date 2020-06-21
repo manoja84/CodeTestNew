@@ -27,6 +27,13 @@ namespace OrderEngineP
             PromotionList = new List<Promotion>();
         }
 
+        public OrderDetails(IOrderDetails orderDetails)
+        {
+            OrderId = orderDetails.GetOrderId();
+            OrderList = orderDetails.GetOrderList();
+        }
+
+
         public int GetTotalOrderAmount()
         {
             TotalAmount = 0;
