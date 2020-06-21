@@ -63,5 +63,46 @@ namespace OrderEngine
             orderdetails.orderDetails(1, "C");
             Assert.IsTrue(orderdetails.GetTotalOrderAmount() == 100);
         }
+
+        [TestMethod]
+        public void CreateOrderDetails_ProductwithPromotionMixedSkids_returnTotalAmount()
+        {
+            int orderId = 1;
+            var orderdetails = new OrderDetails(orderId);
+            orderdetails.AddSkuIds("A", 50);
+            orderdetails.AddSkuIds("B", 30);
+            orderdetails.AddSkuIds("C", 20);
+            orderdetails.AddSkuIds("D", 15);
+            orderdetails.AddPromotion(3, "A", "3 A's for 130", 130);
+            orderdetails.AddPromotion(2, "B", "2 B's for 45", 45);
+            orderdetails.AddPromotion(1, "C & D", "C & D for 30", 30);
+            orderdetails.orderDetails(3, "A");
+            orderdetails.orderDetails(5, "B");
+            orderdetails.orderDetails(1, "C");
+            orderdetails.orderDetails(1, "D");
+            Assert.IsTrue(orderdetails.GetTotalOrderAmount() == 280);
+        }
+
+        [TestMethod]
+        public void CreateOrderDetails_ProductwithPromotionNewPromotionCode_returnTotalAmount()
+        {
+            int orderId = 1;
+            var orderdetails = new OrderDetails(orderId);
+            orderdetails.AddSkuIds("A", 50);
+            orderdetails.AddSkuIds("B", 30);
+            orderdetails.AddSkuIds("C", 20);
+            orderdetails.AddSkuIds("D", 15);
+            orderdetails.AddSkuIds("X", 10);
+            orderdetails.AddPromotion(3, "A", "3 A's for 130", 130);
+            orderdetails.AddPromotion(2, "B", "2 B's for 45", 45);
+            orderdetails.AddPromotion(1, "C & D", "C & D for 30", 30);
+            orderdetails.AddPromotion(1, "X", "X for 10", 10);
+            orderdetails.orderDetails(3, "A");
+            orderdetails.orderDetails(5, "B");
+            orderdetails.orderDetails(1, "C");
+            orderdetails.orderDetails(1, "D");
+            orderdetails.orderDetails(1, "X");
+            Assert.IsTrue(orderdetails.GetTotalOrderAmount() == 290);
+        }
     }
 }

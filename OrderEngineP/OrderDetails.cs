@@ -32,27 +32,41 @@ namespace OrderEngineP
             TotalAmount = 0;
             if (OrderList.Count > 0 && ProductList.Count > 0 && PromotionList.Count > 0)
             {
+                bool isAdded = false;
                 foreach (var item in OrderList)
                 {
                     Promotion p = GetPromotion(item.SkuId);
                     if (p != null)
                     {
-                        int noids = p.NoOfUnit;
-                        int price = p.Price;
-                        if (item.NoOfSkuId == noids)
+                        if (p.Description.Contains("&"))
                         {
-                            TotalAmount = TotalAmount + price;
+                            if (!isAdded)
+                            {
+                                TotalAmount = TotalAmount + p.Price;
+                                isAdded = true;
+                            }
                         }
-                        else if (item.NoOfSkuId > noids)
+                        else
                         {
-                            int x = item.NoOfSkuId - noids;
-                            TotalAmount = TotalAmount + price + x * (ProductList.Where(y => y.SkuId == item.SkuId).SingleOrDefault().Price);
-                        }
+                             isAdded = false;
+                            int noids = p.NoOfUnit;
+                            int price = p.Price;
+                            if (item.NoOfSkuId == noids)
+                            {
+                                TotalAmount = TotalAmount + price;
+                            }
+                            else if (item.NoOfSkuId > noids)
+                            {
+                                int mul = item.NoOfSkuId / noids;
+                                int x = item.NoOfSkuId % noids;
+                                TotalAmount = TotalAmount + mul * price + x * (ProductList.Where(y => y.SkuId == item.SkuId).SingleOrDefault().Price);
+                            }
 
-                        else if (item.NoOfSkuId < noids)
-                        {
+                            else if (item.NoOfSkuId < noids)
+                            {
 
-                            TotalAmount = TotalAmount + item.NoOfSkuId * (ProductList.Where(y => y.SkuId == item.SkuId).SingleOrDefault().Price);
+                                TotalAmount = TotalAmount + item.NoOfSkuId * (ProductList.Where(y => y.SkuId == item.SkuId).SingleOrDefault().Price);
+                            }
                         }
                     }
                     else
@@ -60,9 +74,6 @@ namespace OrderEngineP
                         TotalAmount = TotalAmount + item.NoOfSkuId * (ProductList.Where(y => y.SkuId == item.SkuId).SingleOrDefault().Price);
                     }
                 }
-
-               
-                
             }
             return TotalAmount;
         }
@@ -120,7 +131,7 @@ namespace OrderEngineP
         {
             if (PromotionList.Count > 0)
             {
-                return PromotionList.Where(x => x.SkuId == skuId).SingleOrDefault();
+                return PromotionList.Where(x => x.SkuId == skuId || x.SkuId.Contains(skuId)).SingleOrDefault();
             }
 
             return null;
