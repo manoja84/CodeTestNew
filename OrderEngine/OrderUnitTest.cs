@@ -19,9 +19,11 @@ namespace OrderEngine
         public void CreateOrderDetails_Product()
         {            
             int orderId = 1;
-            var orderdetails = new OrderDetails(orderId);
-            Assert.AreEqual(1, orderdetails.OrderId);
+            var orderdetails = new OrderDetails(orderId);           
             orderdetails.AddSkuIds();
+            Assert.AreEqual(1, orderdetails.OrderId);
+            Assert.IsTrue(orderdetails.ProductList.Count == 0);
+
         }
     }
 }
