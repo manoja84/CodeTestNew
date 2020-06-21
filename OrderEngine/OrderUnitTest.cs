@@ -22,7 +22,7 @@ namespace OrderEngine
             var orderdetails = new OrderDetails(orderId);           
             orderdetails.AddSkuIds("A",50);
             Assert.AreEqual(1, orderdetails.OrderId);
-            Assert.IsTrue(orderdetails.ProductList.Count == 0);
+            Assert.IsTrue(orderdetails.GetProduct().Count == 1);
 
         }
     }

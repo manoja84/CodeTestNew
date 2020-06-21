@@ -8,11 +8,12 @@ namespace OrderEngineP
 
         public int TotalAmount { get; set; }
 
-        public List<Product> ProductList { get; set; }
+        private readonly List<Product> ProductList;
 
         public OrderDetails(int orderId)
         {
             OrderId = orderId;
+            ProductList = new List<Product>();
         }
 
         public int GetTotalOrderAmount()
@@ -21,11 +22,20 @@ namespace OrderEngineP
             return TotalAmount;
         }
 
-        public List<Product> AddSkuIds(string skuId,int price)
-        {            
-            List<Product> SkuList = new List<Product>();
-            
-            return SkuList;
+        public void AddSkuIds(string skuId,int price)
+        {
+            Product _product = new Product();
+            _product.SkuId = skuId;
+            _product.Price = price;
+            ProductList.Add(_product);           
+          
+        }
+
+        public List<Product> GetProduct()
+        {
+            if (ProductList.Count >0) return ProductList;
+
+           return null;
         }
     }
 }
