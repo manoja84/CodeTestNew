@@ -20,7 +20,7 @@ namespace OrderEngine
         {            
             int orderId = 1;
             var orderdetails = new OrderDetails(orderId);           
-            orderdetails.AddSkuIds();
+            orderdetails.AddSkuIds("A",50);
             Assert.AreEqual(1, orderdetails.OrderId);
             Assert.IsTrue(orderdetails.ProductList.Count == 0);
 
