@@ -12,7 +12,16 @@ namespace OrderEngine
             int orderId = 1;
             var orderdetails = new OrderDetails(orderId);
             Assert.AreEqual(1,orderdetails.OrderId);
-            Assert.AreEqual(0, orderdetails.TotalAmount());
+            Assert.AreEqual(0, orderdetails.TotalAmount);
+        }
+
+        [TestMethod]
+        public void CreateOrderDetails_Product()
+        {            
+            int orderId = 1;
+            var orderdetails = new OrderDetails(orderId);
+            Assert.AreEqual(1, orderdetails.OrderId);
+            orderdetails.AddSkuIds();
         }
     }
 }
