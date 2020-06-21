@@ -22,8 +22,29 @@ namespace OrderEngine
             var orderdetails = new OrderDetails(orderId);           
             orderdetails.AddSkuIds("A",50);
             Assert.AreEqual(1, orderdetails.OrderId);
-            Assert.IsTrue(orderdetails.GetProduct().Count == 1);
+            Assert.IsTrue(orderdetails.GetProduct("A").Price == 50);
+        }
 
+        [TestMethod]
+        public void CreateOrderDetails_Product_Empty()
+        {
+            int orderId = 1;
+            var orderdetails = new OrderDetails(orderId);
+            Assert.IsTrue(orderdetails.ProductListIsEmpty());
+        }
+
+        [TestMethod]
+        public void CreateOrderDetails_ProductwithPromotion()
+        {
+            int orderId = 1;
+            var orderdetails = new OrderDetails(orderId);
+            orderdetails.AddSkuIds("A", 50);
+            orderdetails.AddSkuIds("B", 30);
+            orderdetails.AddSkuIds("C", 20);
+            orderdetails.AddSkuIds("D", 15);
+            orderdetails.AddPromotion(3, "A", "3 A's of 130", 130);
+            orderdetails.AddPromotion(2, "B", "2 B's of 45", 45);
+            Assert.IsTrue(orderdetails.GetPromotion("A").Price == 130);
         }
     }
 }
