@@ -9,7 +9,8 @@ namespace OrderEngine
         [TestMethod]
         public void CreateOrderDetails()
         {
-            var orderdetails = new OrderDetails(1);
+            int orderId = 1;
+            var orderdetails = new OrderDetails(orderId);
             Assert.AreEqual(1,orderdetails.OrderId);          
             
         }
