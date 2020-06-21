@@ -11,8 +11,8 @@ namespace OrderEngine
         {
             int orderId = 1;
             var orderdetails = new OrderDetails(orderId);
-            Assert.AreEqual(1,orderdetails.OrderId);          
-            
+            Assert.AreEqual(1,orderdetails.OrderId);
+            Assert.AreEqual(0, orderdetails.TotalAmount());
         }
     }
 }
