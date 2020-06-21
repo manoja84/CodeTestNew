@@ -46,5 +46,22 @@ namespace OrderEngine
             orderdetails.AddPromotion(2, "B", "2 B's of 45", 45);
             Assert.IsTrue(orderdetails.GetPromotion("A").Price == 130);
         }
+
+        [TestMethod]
+        public void CreateOrderDetails_ProductwithPromotion_returnTotalAmount()
+        {
+            int orderId = 1;
+            var orderdetails = new OrderDetails(orderId);
+            orderdetails.AddSkuIds("A", 50);
+            orderdetails.AddSkuIds("B", 30);
+            orderdetails.AddSkuIds("C", 20);
+            orderdetails.AddSkuIds("D", 15);
+            orderdetails.AddPromotion(3, "A", "3 A's of 130", 130);
+            orderdetails.AddPromotion(2, "B", "2 B's of 45", 45);
+            orderdetails.orderDetails(1, "A");
+            orderdetails.orderDetails(1, "B");
+            orderdetails.orderDetails(1, "C");
+            Assert.IsTrue(orderdetails.GetTotalOrderAmount() == 100);
+        }
     }
 }
