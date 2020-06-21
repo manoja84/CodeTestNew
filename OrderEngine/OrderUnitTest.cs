@@ -10,7 +10,7 @@ namespace OrderEngine
         public void CreateOrderDetails()
         {
             var orderdetails = new OrderDetails(1);
-            Assert.AreEqual(1,orderdetails.Id);          
+            Assert.AreEqual(1,orderdetails.OrderId);          
             
         }
     }
